@@ -1,4 +1,4 @@
-FROM nginx:1.11.10
+FROM openresty/openresty:jessie
 MAINTAINER Jason Wilder mail@jasonwilder.com
 
 # Install wget and install/updates certificates
