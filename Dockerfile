@@ -10,8 +10,7 @@ RUN apt-get update \
  && rm -r /var/lib/apt/lists/*
 
 # Configure Nginx and apply fix for very long server names
-RUN echo "daemon off;" >> /usr/local/openresty/nginx/conf/nginx.conf \
- && sed -i 's/^http {/&\n    server_names_hash_bucket_size 128;/g' /usr/local/openresty/nginx/conf/nginx.conf
+RUN sed -i 's/^http {/&\n    server_names_hash_bucket_size 128;/g' /usr/local/openresty/nginx/conf/nginx.conf
 
 # Install Forego
 ADD https://github.com/jwilder/forego/releases/download/v0.16.1/forego /usr/local/bin/forego
