@@ -13,7 +13,7 @@ RUN apt-get update \
 RUN sed -i 's/^http {/&\n    server_names_hash_bucket_size 128;/g' /usr/local/openresty/nginx/conf/nginx.conf
 
 # Install Forego
-ADD https://github.com/jwilder/forego/releases/download/v0.16.1/forego /usr/local/bin/forego
+ADD https://github.com/srgrn/forego/releases/download/v0.16.1-nc/forego /usr/local/bin/forego
 RUN chmod u+x /usr/local/bin/forego
 
 ENV DOCKER_GEN_VERSION 0.7.3
@@ -30,4 +30,4 @@ ENV DOCKER_HOST unix:///tmp/docker.sock
 VOLUME ["/etc/nginx/certs"]
 
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
-CMD ["forego", "start", "-r"]
+CMD ["forego", "start", "-r","--nocolor"]
